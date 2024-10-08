@@ -1,13 +1,10 @@
 package smart.bank.smartbank.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import jakarta.persistence.*;
-        import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
-@Table
+@Table(name = "demande_credit")
 public class DemandeCredit {
 
     @Id
@@ -15,16 +12,16 @@ public class DemandeCredit {
     private Long id;
 
     @Column(nullable = false)
-    private String clientName;
+    private Double amount;
 
     @Column(nullable = false)
-    private BigDecimal amount;
+    private String projet;
 
     @Column(nullable = false)
-    private int duration;
+    private Double duration;
 
     @Column(nullable = false)
-    private BigDecimal monthlyPayments;
+    private Double monthlyPayments;
 
     @Column(nullable = false)
     private String email;
@@ -33,29 +30,37 @@ public class DemandeCredit {
     private String mobilePhone;
 
     @Column(nullable = false)
+    private String civility;
+
+    @Column(nullable = false)
     private String firstName;
 
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String cinNumber;
 
-    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date birthDate;
+    @Column(nullable = false)
+    private LocalDate birthDate;
+
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
+    private LocalDate hiringDate;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date hiringDate;
-
-    @Column(nullable = false)
-    private BigDecimal totalRevenue;
+    private Double totalRevenue;
 
     @Column(nullable = false)
     private boolean hasOngoingCredits;
 
-    // Getters and Setters
+    @Column(nullable = false)
+    private boolean termsAccepted;
+
+
+
+
     public Long getId() {
         return id;
     }
@@ -64,35 +69,35 @@ public class DemandeCredit {
         this.id = id;
     }
 
-    public String getClientName() {
-        return clientName;
+    public String getProjet() {
+        return projet;
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
+    public void setProjet(String projet) {
+        this.projet = projet;
     }
 
-    public BigDecimal getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
-    public int getDuration() {
+    public Double getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(Double duration) {
         this.duration = duration;
     }
 
-    public BigDecimal getMonthlyPayments() {
+    public Double getMonthlyPayments() {
         return monthlyPayments;
     }
 
-    public void setMonthlyPayments(BigDecimal monthlyPayments) {
+    public void setMonthlyPayments(Double monthlyPayments) {
         this.monthlyPayments = monthlyPayments;
     }
 
@@ -110,6 +115,14 @@ public class DemandeCredit {
 
     public void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
+    }
+
+    public String getCivility() {
+        return civility;
+    }
+
+    public void setCivility(String civility) {
+        this.civility = civility;
     }
 
     public String getFirstName() {
@@ -136,27 +149,27 @@ public class DemandeCredit {
         this.cinNumber = cinNumber;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
-    public Date getHiringDate() {
+    public LocalDate getHiringDate() {
         return hiringDate;
     }
 
-    public void setHiringDate(Date hiringDate) {
+    public void setHiringDate(LocalDate hiringDate) {
         this.hiringDate = hiringDate;
     }
 
-    public BigDecimal getTotalRevenue() {
+    public Double getTotalRevenue() {
         return totalRevenue;
     }
 
-    public void setTotalRevenue(BigDecimal totalRevenue) {
+    public void setTotalRevenue(Double totalRevenue) {
         this.totalRevenue = totalRevenue;
     }
 
@@ -166,5 +179,13 @@ public class DemandeCredit {
 
     public void setHasOngoingCredits(boolean hasOngoingCredits) {
         this.hasOngoingCredits = hasOngoingCredits;
+    }
+
+    public boolean isTermsAccepted() {
+        return termsAccepted;
+    }
+
+    public void setTermsAccepted(boolean termsAccepted) {
+        this.termsAccepted = termsAccepted;
     }
 }

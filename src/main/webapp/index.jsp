@@ -1,38 +1,63 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulation de Crédit - Étape 1</title>
+    <title>Simulateur de Crédit</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-    <h1>Simulation de Credit - Etape 1</h1>
-
-    <div class="form">
-        <h2>Informations financières</h2>
-        <label for="montant">Montant du prêt :</label>
-        <input type="number" id="montant" placeholder="Entrez le montant" />
-
-        <label for="duree">Durée (mois) :</label>
-        <input type="number" id="duree" placeholder="Entrez la durée" />
-
-        <label for="taux">Taux d'intérêt (%) :</label>
-        <input type="number" id="taux" placeholder="Entrez le taux" />
-
-        <a href="etape2.html" class="next-button">Suivant</a>
+    <h1>Demander mon crédit en ligne</h1>
+    <div class="steps">
+        <div class="step active">1 Simuler mon crédit</div>
+        <div class="step">2 Mes coordonnées</div>
+        <div class="step">3 Mes infos personnelles</div>
     </div>
 
-    <div class="recap">
-        <h2>Récapitulatif</h2>
-        <p><strong>Montant du prêt :</strong> <span id="recap-montant">0</span> MAD</p>
-        <p><strong>Taux d'intérêt :</strong> <span id="recap-taux">0</span> %</p>
-        <p><strong>Durée :</strong> <span id="recap-duree">0</span> mois</p>
-        <p><strong>Mensualité :</strong> <span id="recap-mensualite">0</span> MAD</p>
-        <p><strong>Coût total :</strong> <span id="recap-total">0</span> MAD</p>
-    </div>
+    <form id="creditForm" action="credit" method="post">
+        <div class="tab">
+            <h2>Simuler mon crédit</h2>
+
+            <c:if test="${not empty errorMessage}">
+                <div class="error" style="color:red">${errorMessage}</div>
+            </c:if>
+
+            <label for="projet">Mon projet</label>
+            <select id="projet" name="projet">
+                <option value="argent">J'ai besoin d'argent</option>
+                <option value="auto">Je finance mon véhicule d'occasion</option>
+                <option value="auto">Je gére mes imprévus</option>
+                <option value="auto">Je finance mon véhicule neuf</option>
+                <option value="auto">J'équipe ma maison'</option>
+            </select>
+            <br>
+            <label for="status">Je suis</label>
+            <select id="status" name="status">
+                <option value="fonctionnaire">Fonctionnaire</option>
+                <option value="salarie">Commercant</option>
+                <option value="salarie">Artisan</option>
+                <option value="salarie">Profession libérale</option>
+                <option value="salarie">Retraite</option>
+            </select>
+            <br>
+            <label for="montant">Montant (en DH)</label>
+            <input type="number" id="montant" name="montant" value="10000">
+            <br>
+            <label for="duree">Durée (en mois)</label>
+            <input type="number" id="duree" name="duree" value="24">
+            <br>
+            <label for="monsualite">monsualite (en DH)</label>
+            <input type="number" id="monsualite" name="monsualite" value="24">
+            <br>
+            <button type="submit" id="nextBtn" class="nextBtn">Suivant</button>
+        </div>
+
+
+    </form>
 </div>
 
-<script src="app.js"></script>
+<%--<script src="script.js"></script>--%>
 </body>
 </html>

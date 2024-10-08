@@ -16,6 +16,11 @@ public class CreditImpl implements CreditRepo {
             em.getTransaction().begin();
             em.persist(creditRequest);
             em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new RuntimeException("Erreur lors de la création de la demande de crédit", e);
         } finally {
             em.close();
         }
@@ -40,6 +45,11 @@ public class CreditImpl implements CreditRepo {
             DemandeCredit updatedDemandeCredit = em.merge(creditRequest);
             em.getTransaction().commit();
             return updatedDemandeCredit;
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new RuntimeException("Erreur lors de la mise à jour de la demande de crédit", e);
         } finally {
             em.close();
         }
@@ -55,6 +65,11 @@ public class CreditImpl implements CreditRepo {
                 em.remove(creditRequest);
                 em.getTransaction().commit();
             }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw new RuntimeException("Erreur lors de la suppression de la demande de crédit", e);
         } finally {
             em.close();
         }
@@ -64,10 +79,9 @@ public class CreditImpl implements CreditRepo {
     public List<DemandeCredit> findAll() {
         EntityManager em = JPAUtil.getEntityManager();
         try {
-            return em.createQuery("FROM DemandeCredit ", DemandeCredit.class).getResultList();
+            return em.createQuery("FROM DemandeCredit", DemandeCredit.class).getResultList();
         } finally {
             em.close();
         }
     }
-
 }

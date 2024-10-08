@@ -15,7 +15,7 @@ public class JPAUtil {
             synchronized (JPAUtil.class) {
                 if (entityManagerFactory == null) {
                     try {
-                        entityManagerFactory = Persistence.createEntityManagerFactory("default");
+                        entityManagerFactory = Persistence.createEntityManagerFactory("creditPU");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

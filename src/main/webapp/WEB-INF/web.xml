@@ -3,4 +3,31 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
+
+<!--    <servlet>-->
+<!--        <servlet-name>CreditServlet</servlet-name>-->
+<!--        <servlet-class>smart.bank.smartbank.controllers.CreditServlet</servlet-class>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>CreditServlet</servlet-name>-->
+<!--        <url-pattern>/credit</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+<!--    <servlet>-->
+<!--        <servlet-name>InfosPersonnellesServlet</servlet-name>-->
+<!--        <servlet-class>smart.bank.smartbank.controllers.InfosPersonnellesServlet</servlet-class>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>InfosPersonnellesServlet</servlet-name>-->
+<!--        <url-pattern>/infosPersonnelles</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+<!--    <servlet>-->
+<!--        <servlet-name>SubmitDemandeServlet</servlet-name>-->
+<!--        <servlet-class>smart.bank.smartbank.controllers.SubmitDemandeServlet</servlet-class>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>SubmitDemandeServlet</servlet-name>-->
+<!--        <url-pattern>/submitDemande</url-pattern>-->
+<!--    </servlet-mapping>-->
 </web-app>
