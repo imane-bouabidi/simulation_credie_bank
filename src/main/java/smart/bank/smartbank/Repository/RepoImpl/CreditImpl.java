@@ -6,6 +6,7 @@ import smart.bank.smartbank.config.JPAUtil;
 import smart.bank.smartbank.entities.DemandeCredit;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CreditImpl implements CreditRepo {
 
@@ -28,10 +29,11 @@ public class CreditImpl implements CreditRepo {
     }
 
     @Override
-    public DemandeCredit findById(Long id) {
+    public Optional<DemandeCredit> findById(Long id) {
         EntityManager em = JPAUtil.getEntityManager();
         try {
-            return em.find(DemandeCredit.class, id);
+            DemandeCredit demande = em.find(DemandeCredit.class, id);
+            return Optional.ofNullable(demande);
         } finally {
             em.close();
         }

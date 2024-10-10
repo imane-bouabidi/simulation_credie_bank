@@ -4,6 +4,7 @@ import smart.bank.smartbank.Repository.CreditRepo;
 import smart.bank.smartbank.entities.DemandeCredit;
 
 import java.util.List;
+import java.util.Optional;
 
 public class DemandeCreditService {
     private final CreditRepo creditRepo;
@@ -20,7 +21,7 @@ public class DemandeCreditService {
         return savedDemande;
     }
 
-    public DemandeCredit getDemandeById(Long id) {
+    public Optional<DemandeCredit> getDemandeById(Long id) {
         return creditRepo.findById(id);
     }
 

@@ -81,7 +81,6 @@
 
         <div class="buttons">
             <button type="submit">Demander ce crédit</button>
-            <button type="button">Voir mon récapitulatif</button>
         </div>
     </form>
 
