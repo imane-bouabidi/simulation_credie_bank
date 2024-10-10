@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <%@ page import="java.util.List" %>
 <%@ page import="smart.bank.smartbank.entities.DemandeCredit" %>
 <%@ page import="smart.bank.smartbank.services.DemandeCreditService" %>
@@ -29,26 +28,53 @@
         <th>Prénom</th>
         <th>CIN</th>
         <th>Date de naissance</th>
+        <th>Civilité</th>
+        <th>Email</th>
+        <th>Téléphone Mobile</th>
+        <th>Date d'embauche</th>
+        <th>Revenu Total</th>
+        <th>Projet</th>
         <th>Montant</th>
         <th>Durée</th>
         <th>Mensualité</th>
-        <th>Date de soumission</th>
+        <th>Crédits en cours</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="demande" items="${demandes}">
-        <tr>
-            <td>${demande.id}</td>
-            <td>${demande.firstName}</td>
-            <td>${demande.lastName}</td>
-            <td>${demande.cinNumber}</td>
-            <td>${demande.birthDate}</td>
-            <td>${demande.amount}</td>
-            <td>${demande.duration}</td>
-            <td>${demande.monthlyPayments}</td>
-            <td>${demande.submissionDate}</td>
-        </tr>
-    </c:forEach>
+    <%
+        for (DemandeCredit demande : demandes) {
+    %>
+    <tr>
+        <td><%= demande.getId() %></td>
+        <td><%= demande.getFirstName() %></td>
+        <td><%= demande.getLastName() %></td>
+        <td><%= demande.getCinNumber() %></td>
+        <td><%= demande.getBirthDate() %></td>
+        <td><%= demande.getCivility() %></td>
+        <td><%= demande.getEmail() %></td>
+        <td><%= demande.getMobilePhone() %></td>
+        <td><%= demande.getHiringDate() %></td>
+        <td><%= demande.getTotalRevenue() %></td>
+        <td><%= demande.getProjet() %></td>
+        <td><%= demande.getAmount() %></td>
+        <td><%= demande.getDuration() %></td>
+        <td><%= demande.getMonthlyPayments() %></td>
+        <td><%= demande.isHasOngoingCredits() ? "Oui" : "Non" %></td>
+        <td>
+            <form action="updateDemande" method="get" style="display:inline;">
+                <input type="hidden" name="id" value="<%= demande.getId() %>">
+                <button type="submit">Mettre à jour</button>
+            </form>
+            <form action="historiqueDemande" method="get" style="display:inline;">
+                <input type="hidden" name="id" value="<%= demande.getId() %>">
+                <button type="submit">Historique</button>
+            </form>
+        </td>
+    </tr>
+    <%
+        }
+    %>
     </tbody>
 </table>
 </body>

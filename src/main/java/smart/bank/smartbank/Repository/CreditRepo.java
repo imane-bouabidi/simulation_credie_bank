@@ -3,11 +3,12 @@ package smart.bank.smartbank.Repository;
 import smart.bank.smartbank.entities.DemandeCredit;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CreditRepo {
     DemandeCredit save(DemandeCredit creditRequest);
 
-    DemandeCredit findById(Long id);
+    Optional<DemandeCredit> findById(Long id);
 
     DemandeCredit update(DemandeCredit creditRequest);
 

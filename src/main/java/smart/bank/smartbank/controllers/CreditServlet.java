@@ -12,7 +12,7 @@ import java.io.IOException;
 public class CreditServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String projet = req.getParameter("projet");
         String status = req.getParameter("status");
         String montantStr = req.getParameter("montant");

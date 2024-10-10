@@ -2,6 +2,8 @@ package smart.bank.smartbank.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "demande_credit")
@@ -38,7 +40,7 @@ public class DemandeCredit {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String cinNumber;
 
     @Temporal(TemporalType.DATE)
@@ -58,8 +60,17 @@ public class DemandeCredit {
     @Column(nullable = false)
     private boolean termsAccepted;
 
+    @OneToMany(mappedBy = "demandeCredit", cascade = CascadeType.ALL)
+    private List<DemandeStatut> demandeStatuts = new ArrayList<>();
 
 
+    public List<DemandeStatut> getDemandeStatuts() {
+        return demandeStatuts;
+    }
+
+    public void setDemandeStatuts(List<DemandeStatut> demandeStatuts) {
+        this.demandeStatuts = demandeStatuts;
+    }
 
     public Long getId() {
         return id;
