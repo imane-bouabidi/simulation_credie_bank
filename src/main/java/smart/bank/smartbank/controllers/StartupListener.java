@@ -15,6 +15,7 @@ import smart.bank.smartbank.services.StatutService;
 
         @Override
         public void contextInitialized(ServletContextEvent sce) {
+
             if (!statutService.existsByNom("En attente")) {
                 statutService.createStatut("En attente");
             }

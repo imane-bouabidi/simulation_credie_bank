@@ -1,7 +1,5 @@
 package smart.bank.smartbank.services;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import smart.bank.smartbank.Repository.DemandeStatutRepo;
 import smart.bank.smartbank.Repository.RepoImpl.DemandeStatutImpl;
 import smart.bank.smartbank.entities.DemandeStatut;

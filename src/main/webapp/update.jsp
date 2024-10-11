@@ -90,9 +90,9 @@
 
     <label for="statut">Mon projet :</label>
     <select id="statut" name="statut">
-        <option value="enAttente" <%= demande.getDemandeStatuts().equals("enAttente") ? "selected" : "" %>>En Attente</option>
-        <option value="accepte" <%= demande.getDemandeStatuts().equals("accepte") ? "selected" : "" %>>Accepte</option>
-        <option value="refuse" <%= demande.getDemandeStatuts().equals("refuse") ? "selected" : "" %>>Refuse</option>
+        <option value="En attente" <%= demande.getDemandeStatuts().equals("En attente") ? "selected" : "" %>>En Attente</option>
+        <option value="Accepté" <%= demande.getDemandeStatuts().equals("Accepté") ? "selected" : "" %>>Accepte</option>
+        <option value="Rejeté" <%= demande.getDemandeStatuts().equals("Rejeté") ? "selected" : "" %>>Refuse</option>
     </select><br>
     <button type="submit">Enregistrer les modifications</button>
 </form>

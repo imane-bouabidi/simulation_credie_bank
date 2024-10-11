@@ -60,7 +60,7 @@ public class DemandeCredit {
     @Column(nullable = false)
     private boolean termsAccepted;
 
-    @OneToMany(mappedBy = "demandeCredit", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "demandeCredit", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<DemandeStatut> demandeStatuts = new ArrayList<>();
 
     public List<DemandeStatut> getDemandeStatuts() {

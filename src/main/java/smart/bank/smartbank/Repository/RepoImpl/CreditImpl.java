@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 public class CreditImpl implements CreditRepo {
-        @PersistenceContext
-        EntityManager em = JPAUtil.getEntityManager();
+
     @Override
     public DemandeCredit save(DemandeCredit creditRequest) {
+    EntityManager em = JPAUtil.getEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(creditRequest);
@@ -31,6 +31,7 @@ public class CreditImpl implements CreditRepo {
 
     @Override
     public Optional<DemandeCredit> findById(Long id) {
+    EntityManager em = JPAUtil.getEntityManager();
         try {
             DemandeCredit demande = em.find(DemandeCredit.class, id);
             return Optional.ofNullable(demande);
@@ -41,6 +42,7 @@ public class CreditImpl implements CreditRepo {
 
     @Override
     public DemandeCredit update(DemandeCredit creditRequest) {
+    EntityManager em = JPAUtil.getEntityManager();
         try {
             em.getTransaction().begin();
             DemandeCredit updatedDemandeCredit = em.merge(creditRequest);
@@ -58,6 +60,7 @@ public class CreditImpl implements CreditRepo {
 
     @Override
     public void deleteById(Long id) {
+    EntityManager em = JPAUtil.getEntityManager();
         try {
             DemandeCredit creditRequest = em.find(DemandeCredit.class, id);
             if (creditRequest != null) {
@@ -77,6 +80,7 @@ public class CreditImpl implements CreditRepo {
 
     @Override
     public List<DemandeCredit> findAll() {
+        EntityManager em = JPAUtil.getEntityManager();
         try {
             return em.createQuery("FROM DemandeCredit", DemandeCredit.class).getResultList();
         } finally {
