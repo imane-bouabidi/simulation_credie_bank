@@ -63,7 +63,6 @@ public class DemandeCredit {
     @OneToMany(mappedBy = "demandeCredit", cascade = CascadeType.ALL)
     private List<DemandeStatut> demandeStatuts = new ArrayList<>();
 
-
     public List<DemandeStatut> getDemandeStatuts() {
         return demandeStatuts;
     }

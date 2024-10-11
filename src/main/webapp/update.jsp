@@ -88,6 +88,12 @@
     <label for="hasOngoingCredits">Crédits en cours :</label>
     <input type="checkbox" id="hasOngoingCredits" name="hasOngoingCredits" <%= demande.isHasOngoingCredits() ? "checked" : "" %>><br>
 
+    <label for="statut">Mon projet :</label>
+    <select id="statut" name="statut">
+        <option value="enAttente" <%= demande.getDemandeStatuts().equals("enAttente") ? "selected" : "" %>>En Attente</option>
+        <option value="accepte" <%= demande.getDemandeStatuts().equals("accepte") ? "selected" : "" %>>Accepte</option>
+        <option value="refuse" <%= demande.getDemandeStatuts().equals("refuse") ? "selected" : "" %>>Refuse</option>
+    </select><br>
     <button type="submit">Enregistrer les modifications</button>
 </form>
 </div>
