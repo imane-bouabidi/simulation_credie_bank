@@ -1,17 +1,18 @@
 package smart.bank.smartbank.services;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import smart.bank.smartbank.Repository.CreditRepo;
 import smart.bank.smartbank.entities.DemandeCredit;
-
 import java.util.List;
 import java.util.Optional;
 
+@ApplicationScoped
 public class DemandeCreditService {
-    private final CreditRepo creditRepo;
 
-    public DemandeCreditService(CreditRepo creditRepo) {
-        this.creditRepo = creditRepo;
-    }
+    @Inject
+    private CreditRepo creditRepo;
+
 
     public DemandeCredit createDemande(DemandeCredit demandeCredit) {
         DemandeCredit savedDemande = creditRepo.save(demandeCredit);
@@ -36,4 +37,7 @@ public class DemandeCreditService {
     public void deleteDemande(Long id) {
         creditRepo.deleteById(id);
     }
+
+
+
 }

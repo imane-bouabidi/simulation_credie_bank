@@ -1,16 +1,21 @@
 package smart.bank.smartbank.Repository.RepoImpl;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import smart.bank.smartbank.Repository.CreditRepo;
 import smart.bank.smartbank.config.JPAUtil;
 import smart.bank.smartbank.entities.DemandeCredit;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+@ApplicationScoped
 public class CreditImpl implements CreditRepo {
 
+    @Transactional
     @Override
     public DemandeCredit save(DemandeCredit creditRequest) {
     EntityManager em = JPAUtil.getEntityManager();
@@ -29,6 +34,7 @@ public class CreditImpl implements CreditRepo {
         return creditRequest;
     }
 
+    @Transactional
     @Override
     public Optional<DemandeCredit> findById(Long id) {
     EntityManager em = JPAUtil.getEntityManager();
@@ -40,6 +46,7 @@ public class CreditImpl implements CreditRepo {
         }
     }
 
+    @Transactional
     @Override
     public DemandeCredit update(DemandeCredit creditRequest) {
     EntityManager em = JPAUtil.getEntityManager();
@@ -58,6 +65,7 @@ public class CreditImpl implements CreditRepo {
         }
     }
 
+    @Transactional
     @Override
     public void deleteById(Long id) {
     EntityManager em = JPAUtil.getEntityManager();
@@ -78,6 +86,7 @@ public class CreditImpl implements CreditRepo {
         }
     }
 
+    @Transactional
     @Override
     public List<DemandeCredit> findAll() {
         EntityManager em = JPAUtil.getEntityManager();
@@ -87,4 +96,7 @@ public class CreditImpl implements CreditRepo {
             em.close();
         }
     }
+
+
+
 }

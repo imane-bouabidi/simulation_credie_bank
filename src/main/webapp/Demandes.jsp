@@ -4,8 +4,7 @@
 <%@ page import="smart.bank.smartbank.services.DemandeCreditService" %>
 
 <%
-    DemandeCreditService creditService = new DemandeCreditService(new smart.bank.smartbank.Repository.RepoImpl.CreditImpl());
-    List<DemandeCredit> demandes = creditService.getAllDemandes();
+    List<DemandeCredit> demandes = (List<DemandeCredit>) request.getAttribute("demandes");
 %>
 
 <!DOCTYPE html>
@@ -19,6 +18,21 @@
 </head>
 <body>
 <h1>Liste des demandes de crédit</h1>
+
+<form action="historiqueDemande" method="get">
+    <label for="date">Date :</label>
+    <input type="date" name="date" id="date">
+
+    <label for="statut">Statut :</label>
+    <select name="statut" id="statut">
+        <option value="">Tous</option>
+        <option value="En attente">En attente</option>
+        <option value="Accepté">Accepté</option>
+        <option value="Rejeté">Rejeté</option>
+    </select>
+
+    <button type="submit">Filtrer</button>
+</form>
 
 <table border="1">
     <thead>

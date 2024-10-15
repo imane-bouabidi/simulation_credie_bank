@@ -8,5 +8,6 @@ public interface StatutRepo {
     Statut findByNom(String nom);
     void save(String nom);
     boolean existsByNom(String nom);
+    int count();
 
 }

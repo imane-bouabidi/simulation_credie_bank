@@ -1,12 +1,11 @@
 package smart.bank.smartbank.controllers;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import smart.bank.smartbank.Repository.CreditRepo;
-import smart.bank.smartbank.Repository.RepoImpl.CreditImpl;
 import smart.bank.smartbank.entities.DemandeCredit;
 import smart.bank.smartbank.entities.DemandeStatut;
 import smart.bank.smartbank.entities.Statut;
@@ -16,20 +15,17 @@ import smart.bank.smartbank.services.StatutService;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Optional;
 
 @WebServlet("/updateDemande")
 public class UpdateCreditServlet extends HttpServlet {
+
+    @Inject
     private DemandeCreditService demandeService;
-    private StatutService statutService = new StatutService();
-    private DemandeStatutService demandeStatutService = new DemandeStatutService();
 
-
-    @Override
-    public void init() {
-        CreditRepo creditRepo = new CreditImpl();
-        demandeService = new DemandeCreditService(creditRepo);
-    }
+    @Inject
+    private StatutService statutService;
+    @Inject
+    private DemandeStatutService demandeStatutService;
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

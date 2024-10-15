@@ -1,23 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: imane
-  Date: 09/10/2024
-  Time: 14:00
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="smart.bank.smartbank.entities.DemandeCredit" %>
 <%@ page import="smart.bank.smartbank.services.DemandeCreditService" %>
 
 <%
-    Long demandeId = Long.parseLong(request.getParameter("id"));
-    DemandeCreditService creditService = new DemandeCreditService(new smart.bank.smartbank.Repository.RepoImpl.CreditImpl());
-    DemandeCredit demande = creditService.getDemandeById(demandeId).orElse(null);
-
-    if (demande == null) {
-        System.out.println("Demande introuvable.");
-        return;
-    }
+    DemandeCredit demande = (DemandeCredit) request.getAttribute("demande");
 %>
 
 <!DOCTYPE html>

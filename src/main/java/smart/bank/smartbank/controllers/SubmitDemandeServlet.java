@@ -1,5 +1,6 @@
 package smart.bank.smartbank.controllers;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,20 +10,27 @@ import jakarta.servlet.http.HttpSession;
 import smart.bank.smartbank.Repository.CreditRepo;
 import smart.bank.smartbank.Repository.RepoImpl.CreditImpl;
 import smart.bank.smartbank.entities.DemandeCredit;
+import smart.bank.smartbank.entities.DemandeStatut;
 import smart.bank.smartbank.services.DemandeCreditService;
+import smart.bank.smartbank.services.DemandeStatutService;
+import smart.bank.smartbank.services.StatutService;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 @WebServlet("/submitDemande")
 public class SubmitDemandeServlet extends HttpServlet {
+
+    @Inject
     private DemandeCreditService creditService;
 
-    @Override
-    public void init() throws ServletException {
-        CreditRepo creditRepo = new CreditImpl();
-        creditService = new DemandeCreditService(creditRepo);
-    }
+    @Inject
+    private StatutService statutS;
+
+    @Inject
+    private DemandeStatutService demandeStatutS;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -56,7 +64,9 @@ public class SubmitDemandeServlet extends HttpServlet {
 
         try {
             Credit(session);
-            resp.sendRedirect("Demandes.jsp");
+            List<DemandeCredit> demandes = creditService.getAllDemandes();
+            req.setAttribute("demandes", demandes);
+            req.getRequestDispatcher("/Demandes.jsp").forward(req, resp);
         } catch (Exception e) {
             String fullErrorMessage = "Erreur lors de la soumission de la demande de crédit : " + e.getMessage();
             e.printStackTrace();
@@ -102,6 +112,16 @@ public class SubmitDemandeServlet extends HttpServlet {
         demandeCredit.setDuration(duree);
         demandeCredit.setMonthlyPayments(mensualite);
         creditService.createDemande(demandeCredit);
+
+        //donner en attente comme statut par defaut :
+        DemandeStatut demandStatut = new DemandeStatut();
+        demandStatut.setDemandeCredit(demandeCredit);
+        demandStatut.setStatut(statutS.findByNom("En attente"));
+        demandStatut.setDateChangement(LocalDate.now());
+        demandeStatutS.save(demandStatut);
+
+        demandeCredit.getDemandeStatuts().add(demandStatut);
+        creditService.updateDemande(demandeCredit);
     }
 
 }

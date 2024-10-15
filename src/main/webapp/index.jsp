@@ -42,14 +42,26 @@
                 <option value="salarie">Retraite</option>
             </select>
             <br>
-            <label for="montant">Montant (en DH)</label>
-            <input type="number" id="montant" name="montant" value="10000">
+            <div class="input-group">
+                <label for="montant">Montant (en DH)</label>
+                <div class="value-box" id="amount-value">10000</div>
+                <input type="range" id="montant" name="montant" min="5000" max="600000" value="10000" step="1000" />
+            </div>
             <br>
-            <label for="duree">Durée (en mois)</label>
-            <input type="number" id="duree" name="duree" value="24">
+
+            <div class="input-group">
+                <label for="duree">Durée (en mois)</label>
+                <div class="value-box" id="duration-value">24</div>
+                <input type="range" id="duree" name="duree" min="12" max="120" value="24" step="6" />
+            </div>
+
             <br>
-            <label for="monsualite">monsualite (en DH)</label>
-            <input type="number" id="monsualite" name="monsualite" value="24">
+
+            <div class="input-group">
+                <label for="monsualite">Mensualite (en DH)</label>
+                <div class="value-box" id="monthly-value">469</div>
+                <input type="range" id="monsualite" name="monsualite" min="100" max="10000" value="469" step="50" />
+            </div>
             <br>
             <button type="submit" id="nextBtn" class="nextBtn">Suivant</button>
         </div>
@@ -58,6 +70,6 @@
     </form>
 </div>
 
-<%--<script src="script.js"></script>--%>
+<script src="script.js"></script>
 </body>
 </html>

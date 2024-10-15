@@ -2,6 +2,7 @@ package smart.bank.smartbank.Repository;
 
 import smart.bank.smartbank.entities.DemandeCredit;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 

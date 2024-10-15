@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulation de Crédit</title>
-    <link rel="stylesheet" href="infos.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/infos.css">
 </head>
 <body>
 <div class="container">
@@ -84,26 +84,6 @@
         </div>
     </form>
 
-<%--    <div class="recap">--%>
-<%--        <h3>Mon récapitulatif</h3>--%>
-<%--        <div class="recap-section">--%>
-<%--            <p>Mon projet</p>--%>
-<%--            <strong>Prêt Personnel</strong>--%>
-<%--        </div>--%>
-<%--        <div class="recap-section">--%>
-<%--            <p>Coordonnées et infos personnelles</p>--%>
-<%--            <p>Email: imaneimane20201@gmail.com</p>--%>
-<%--            <p>Téléphone: 0649786994</p>--%>
-<%--        </div>--%>
-<%--        <div class="recap-section">--%>
-<%--            <p>Détails de mon crédit</p>--%>
-<%--            <p>Vous êtes: <strong>Fonctionnaire</strong></p>--%>
-<%--            <p>Montant: <strong>10 000 DH</strong></p>--%>
-<%--            <p>Durée: <strong>24 mois</strong></p>--%>
-<%--            <p>Mensualité: <strong>469,40 DH</strong></p>--%>
-<%--            <p>Frais de dossier: <strong>271,50 DH</strong></p>--%>
-<%--        </div>--%>
-<%--    </div>--%>
 </div>
 </body>
 </html>
