@@ -69,3 +69,25 @@ button {
 button:hover {
     background-color: #e0a800;
 }
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    background-color: #ffc107;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    max-width: 700px;
+}
+
+.tab {
+    padding: 12px 25px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.tab.active {
+    background-color: #e0a800;
+    border-radius: 5px;
+}

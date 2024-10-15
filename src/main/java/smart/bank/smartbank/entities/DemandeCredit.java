@@ -43,12 +43,10 @@ public class DemandeCredit {
     @Column(nullable = false)
     private String cinNumber;
 
-    @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
+    @Column(name = "birthdate",nullable = false)
     private LocalDate birthDate;
 
-    @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
+    @Column(name = "hiringdate",nullable = false)
     private LocalDate hiringDate;
 
     @Column(nullable = false)

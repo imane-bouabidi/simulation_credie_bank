@@ -51,9 +51,6 @@ table tr:nth-child(odd) {
     background-color: #fff;
 }
 
-table tr:hover {
-    background-color: #ffe8a1;
-}
 
 button {
     padding: 10px 15px;

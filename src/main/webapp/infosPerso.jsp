@@ -11,9 +11,9 @@
 <body>
 <div class="container">
     <div class="tabs">
-        <div class="tab active">1. Simuler mon crédit</div>
+        <div class="tab ">1. Simuler mon crédit</div>
         <div class="tab">2. Mes coordonnées</div>
-        <div class="tab">3. Mes infos personnelles</div>
+        <div class="tab active">3. Mes infos personnelles</div>
     </div>
     <c:if test="${not empty errorMessage}">
         <div class="error" style="color:red">${errorMessage}</div>
@@ -65,7 +65,7 @@
 
         <div class="form-section">
             <label>Avez-vous des crédits en cours ?</label>
-            <div>
+            <div class="credit-options">
                 <input type="radio" id="credit-yes" name="credit" value="yes">
                 <label for="credit-yes">Oui</label>
 

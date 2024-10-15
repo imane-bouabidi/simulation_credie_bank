@@ -7,8 +7,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import smart.bank.smartbank.Repository.CreditRepo;
-import smart.bank.smartbank.Repository.RepoImpl.CreditImpl;
 import smart.bank.smartbank.entities.DemandeCredit;
 import smart.bank.smartbank.entities.DemandeStatut;
 import smart.bank.smartbank.services.DemandeCreditService;

@@ -82,7 +82,7 @@ public class UpdateCreditServlet extends HttpServlet {
 
             demandeService.updateDemande(demande);
 
-            resp.sendRedirect("Demandes.jsp");
+            resp.sendRedirect("demandesList");
         } else {
             resp.getWriter().write("Demande introuvable.");
         }

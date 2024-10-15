@@ -1,10 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="smart.bank.smartbank.entities.DemandeCredit" %>
-<%@ page import="smart.bank.smartbank.services.DemandeCreditService" %>
+<%@ page import="java.util.stream.Collectors" %>
 
 <%
     List<DemandeCredit> demandes = (List<DemandeCredit>) request.getAttribute("demandes");
+    //    String dateParam = request.getParameter("date");
+
 %>
 
 <!DOCTYPE html>
@@ -14,14 +16,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toutes les demandes de crédit</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="historiqueCss.css">
 </head>
 <body>
+
 <h1>Liste des demandes de crédit</h1>
 
-<form action="historiqueDemande" method="get">
-    <label for="date">Date :</label>
-    <input type="date" name="date" id="date">
+<form action="demandesList" method="get">
+<%--    <label for="date">Date :</label>--%>
+<%--    <input type="date" name="date" id="date">--%>
 
     <label for="statut">Statut :</label>
     <select name="statut" id="statut">
@@ -29,11 +32,14 @@
         <option value="En attente">En attente</option>
         <option value="Accepté">Accepté</option>
         <option value="Rejeté">Rejeté</option>
+
     </select>
 
     <button type="submit">Filtrer</button>
 </form>
-
+<% if (demandes == null || demandes.isEmpty()) { %>
+<p>Aucune demande de crédit trouvée.</p>
+<% } else { %>
 <table border="1">
     <thead>
     <tr>
@@ -91,5 +97,6 @@
     %>
     </tbody>
 </table>
+<% } %>
 </body>
 </html>

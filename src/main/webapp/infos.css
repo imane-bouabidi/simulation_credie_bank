@@ -61,7 +61,8 @@ label {
 
 input[type="text"],
 input[type="date"],
-input[type="number"] {
+input[type="number"],
+input[type="email"]{
     width: 100%;
     padding: 12px;
     border: 1px solid #ffc107;
@@ -71,7 +72,8 @@ input[type="number"] {
 
 input[type="text"]:focus,
 input[type="date"]:focus,
-input[type="number"]:focus {
+input[type="number"]:focus,
+input[type="email"]:focus {
     border: 1px solid #e0a800;
 }
 
@@ -124,3 +126,25 @@ button:hover {
 .recap-section p {
     margin-bottom: 5px;
 }
+
+.civility-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.civility-options input[type="radio"] {
+    margin-right: 5px;
+}
+
+
+.credit-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.credit-options input[type="radio"] {
+    margin-right: 5px;
+}
+
